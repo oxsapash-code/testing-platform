@@ -1,58 +1,52 @@
 import React from 'react';
 
-function App() {
-  const topics = [
-    {
-      id: 1,
-      title: "ERP профессионал",
-      sections: [{
-        title: "Основные средства",
-        questions: [{
-          text: "Способом приобретения основного средства может быть:",
-          answers: [
-            "Строительство (создание)",
-            "Вклад в уставный капитал", 
-            "Безвозмездное поступление",
-            "Варианты 1 или 2",
-            "Варианты 1 или 3",
-            "Варианты 1 или 2 или 3"
-          ]
-        }]
-      }]
-    }
-  ];
-
+export default function App() {
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>🧪 Testing Platform</h1>
-      <h2>Темы для тестирования:</h2>
+    <div style={{ 
+      padding: '40px', 
+      textAlign: 'center',
+      fontFamily: 'Arial, sans-serif'
+    }}>
+      <h1 style={{ color: '#2c3e50' }}>🧪 Testing Platform</h1>
+      <p style={{ fontSize: '18px', color: '#7f8c8d' }}>
+        Образовательная платформа для создания и прохождения тестов
+      </p>
       
-      {topics.map((topic, idx) => (
-        <div key={idx} style={{ 
-          border: '2px solid #4CAF50',
-          borderRadius: '10px',
-          padding: '15px',
-          margin: '15px 0'
-        }}>
-          <h3>{topic.title}</h3>
-          <button style={{
-            padding: '10px 20px',
+      <div style={{ 
+        marginTop: '40px',
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '20px'
+      }}>
+        <a 
+          href="https://github.com/oxsapash-code/testing-platform_icecode"
+          style={{
+            padding: '12px 24px',
+            background: '#24292e',
+            color: 'white',
+            textDecoration: 'none',
+            borderRadius: '8px',
+            fontWeight: 'bold'
+          }}
+        >
+          📦 Код на GitHub
+        </a>
+        
+        <button 
+          onClick={() => alert('Демо-режим: полная версия работает локально')}
+          style={{
+            padding: '12px 24px',
             background: '#4CAF50',
             color: 'white',
             border: 'none',
-            borderRadius: '5px',
-            fontSize: '16px'
-          }}>
-            Начать тест
-          </button>
-        </div>
-      ))}
-      
-      <p style={{ marginTop: '30px', color: '#666' }}>
-        Полная версия с бэкендом доступна при локальном запуске
-      </p>
+            borderRadius: '8px',
+            fontWeight: 'bold',
+            cursor: 'pointer'
+          }}
+        >
+          🎯 Демо тест
+        </button>
+      </div>
     </div>
   );
 }
-
-export default App;
