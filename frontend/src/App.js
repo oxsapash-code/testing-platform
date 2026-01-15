@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+
 
 function App() {
   const [topics, setTopics] = useState([]);
@@ -8,37 +8,29 @@ function App() {
   const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
 
-  // Загружаем тесты
+    // Демо-данные для Vercel
   useEffect(() => {
-    axios.get('/api/topics/')
-      .then(response => {
-        console.log('Topics loaded:', response.data);
-        setTopics(response.data);
-      })
-      .catch(error => {
-        console.error('Error loading topics, using mock data', error);
-        // Мок-данные для демо если API не работает
-        setTopics([{
+    const demoTopics = [{
+      id: 1,
+      title: "ERP профессионал",
+      sections: [{
+        id: 1,
+        title: "Основные средства",
+        questions: [{
           id: 1,
-          title: "ERP профессионал",
-          sections: [{
-            id: 1,
-            title: "Основные средства",
-            questions: [{
-              id: 1,
-              text: "Способом приобретения основного средства может быть:",
-              answers: [
-                { id: 1, text: "Строительство (создание)" },
-                { id: 2, text: "Вклад в уставный капитал" },
-                { id: 3, text: "Безвозмездное поступление" },
-                { id: 4, text: "Варианты 1 или 2" },
-                { id: 5, text: "Варианты 1 или 3" },
-                { id: 6, text: "Варианты 1 или 2 или 3" }
-              ]
-            }]
-          }]
-        }]);
-      });
+          text: "Способом приобретения основного средства может быть:",
+          answers: [
+            { id: 1, text: "Строительство (создание)" },
+            { id: 2, text: "Вклад в уставный капитал" },
+            { id: 3, text: "Безвозмездное поступление" },
+            { id: 4, text: "Варианты 1 или 2" },
+            { id: 5, text: "Варианты 1 или 3" },
+            { id: 6, text: "Варианты 1 или 2 или 3" }
+          ]
+        }]
+      }]
+    }];
+    setTopics(demoTopics);
   }, []);
 
   const startTest = (topic) => {
