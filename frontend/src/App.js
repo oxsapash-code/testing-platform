@@ -1,45 +1,56 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 function App() {
-  const [topics, setTopics] = useState([]);
-
-  useEffect(() => {
-    // Гарантируем что topics будет массивом
-    setTopics([
-      {
-        id: 1,
-        title: "Демо-тест по программированию",
-        description: "Базовые концепции программирования"
-      }
-    ]);
-  }, []);
+  const topics = [
+    {
+      id: 1,
+      title: "ERP профессионал",
+      sections: [{
+        title: "Основные средства",
+        questions: [{
+          text: "Способом приобретения основного средства может быть:",
+          answers: [
+            "Строительство (создание)",
+            "Вклад в уставный капитал", 
+            "Безвозмездное поступление",
+            "Варианты 1 или 2",
+            "Варианты 1 или 3",
+            "Варианты 1 или 2 или 3"
+          ]
+        }]
+      }]
+    }
+  ];
 
   return (
-    <div style={{ padding: '20px', maxWidth: '800px', margin: '0 auto' }}>
+    <div style={{ padding: '20px' }}>
       <h1>🧪 Testing Platform</h1>
-      <p>Демо-интерфейс тестирования</p>
+      <h2>Темы для тестирования:</h2>
       
-      <h2>Доступные тесты:</h2>
-      {Array.isArray(topics) && topics.map(topic => (
-        <div key={topic.id} style={{
-          border: '1px solid #ccc',
+      {topics.map((topic, idx) => (
+        <div key={idx} style={{ 
+          border: '2px solid #4CAF50',
+          borderRadius: '10px',
           padding: '15px',
-          margin: '10px 0',
-          borderRadius: '8px'
+          margin: '15px 0'
         }}>
           <h3>{topic.title}</h3>
-          <p>{topic.description}</p>
           <button style={{
-            padding: '8px 16px',
+            padding: '10px 20px',
             background: '#4CAF50',
             color: 'white',
             border: 'none',
-            borderRadius: '4px'
+            borderRadius: '5px',
+            fontSize: '16px'
           }}>
             Начать тест
           </button>
         </div>
       ))}
+      
+      <p style={{ marginTop: '30px', color: '#666' }}>
+        Полная версия с бэкендом доступна при локальном запуске
+      </p>
     </div>
   );
 }
